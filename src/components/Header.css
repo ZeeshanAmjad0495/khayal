@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100px;
+  position: sticky;
+  overflow: hidden;
+  background-color: beige;
+}
+
+.cart-icon {
+  margin-top: 2%;
+  display: inline-flex;
+  width: 80%;
+  position: relative;
+  justify-content: flex-end;
+}
+.shopping-cart-outlined {
+  min-width: 30px;
+  min-height: 30px;
+}
+.logo {
+  display: flex;
+  position: absolute;
+  width: 90%;
+  justify-content: center;
+  height: 50%;
+  margin-top: -3%;
+}
+
+.khayal-logo {
+  width: 100px;
+  height: 100px;
+}

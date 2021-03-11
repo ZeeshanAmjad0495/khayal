@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Mehr';
+  src: url('../MehrNastaliqWebRegular.ttf') format('truetype');
+}
+
+.cards {
+  padding: 20px;
+  margin-top: 10vh;
+  font-family: 'Mehr';
+}
+
+img {
+  border-radius: 15%;
+  height: 240px;
+}
+.card {
+  height: 440px;
+  border-radius: 5%;
+  padding: 25px;
+  margin-bottom: 15px;
+}
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10%;
+}
+.add-to-cart {
+  margin-top: 30px;
+  margin-left: px;
+  opacity: 0.5;
+}
+.add-to-cart:hover {
+  opacity: 1;
+}
