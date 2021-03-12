@@ -1,4 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import db from '../firebase/firebase.utils';
+import { addItemToCart } from '../features/cartSlice';
 
 import { Card } from 'antd';
 import { Button } from 'antd';
@@ -10,6 +14,19 @@ import './ItemCard.css';
 const { Meta } = Card;
 
 const ItemCard = ({ image, title, description, price }) => {
+  const dispatch = useDispatch();
+
+  const handleOnClick = () => {
+    const selectedItem = { image, title, price };
+    dispatch(addItemToCart(selectedItem));
+
+    db.collection('orders').add({
+      title: title,
+      imageUrl: image,
+      price: price,
+    });
+  };
+
   return (
     <div className="cards">
       <Card
@@ -20,7 +37,7 @@ const ItemCard = ({ image, title, description, price }) => {
       >
         <Meta className="meta" title={title} description={description} />
         {price}
-        <div class="btn">
+        <div className="btn">
           <Button
             type="primary"
             className="add-to-cart"
@@ -28,6 +45,7 @@ const ItemCard = ({ image, title, description, price }) => {
             size="large"
             ghost="true"
             icon={<ShoppingCartOutlined />}
+            onClick={() => handleOnClick()}
           >
             خریدیے
           </Button>

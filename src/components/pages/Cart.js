@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { selectCartItems } from '../../features/cartSlice';
 
 const Cart = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const order = useSelector(selectCartItems);
+  console.log(order);
 
-export default Cart
+  return <div>{order}</div>;
+};
+
+export default Cart;
