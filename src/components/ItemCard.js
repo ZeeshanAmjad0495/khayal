@@ -2,10 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import db from '../firebase/firebase.utils';
-import { addItemToCart } from '../features/cartSlice';
+import { addItemsToCart } from '../features/cartSlice';
 
-import { Card } from 'antd';
-import { Button } from 'antd';
+import { Button, Card } from 'antd';
 import ShoppingCartOutlined from '@ant-design/icons/ShoppingCartOutlined';
 
 import 'antd/dist/antd.css';
@@ -13,18 +12,12 @@ import './ItemCard.css';
 
 const { Meta } = Card;
 
-const ItemCard = ({ image, title, description, price }) => {
+const ItemCard = ({ image, title, description, price, quantity }) => {
   const dispatch = useDispatch();
 
   const handleOnClick = () => {
-    const selectedItem = { image, title, price };
-    dispatch(addItemToCart(selectedItem));
-
-    db.collection('orders').add({
-      title: title,
-      imageUrl: image,
-      price: price,
-    });
+    const selectedItem = { image, title, price, quantity };
+    dispatch(addItemsToCart(selectedItem));
   };
 
   return (
@@ -36,7 +29,6 @@ const ItemCard = ({ image, title, description, price }) => {
         cover={<img alt="example" src={image} />}
       >
         <Meta className="meta" title={title} description={description} />
-        {price}
         <div className="btn">
           <Button
             type="primary"
@@ -45,7 +37,7 @@ const ItemCard = ({ image, title, description, price }) => {
             size="large"
             ghost="true"
             icon={<ShoppingCartOutlined />}
-            onClick={() => handleOnClick()}
+            onClick={handleOnClick}
           >
             خریدیے
           </Button>

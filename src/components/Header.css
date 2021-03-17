@@ -17,8 +17,16 @@
   justify-content: flex-end;
 }
 .shopping-cart-outlined {
-  min-width: 30px;
+  min-width: 50px;
   min-height: 30px;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 15%;
+  background-color: cornsilk;
+}
+.shopping-cart-outlined:hover {
+  cursor: pointer;
+  background-color: tomato;
 }
 .logo {
   display: flex;

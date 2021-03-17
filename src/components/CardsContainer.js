@@ -18,6 +18,7 @@ const CardsContainer = () => {
           description={description}
           image={imageUrl}
           price={price}
+          quantity={1}
         />
       ))}
     </div>

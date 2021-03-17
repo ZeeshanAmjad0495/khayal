@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Mehr';
+}
+.container {
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 250px;
+  width: 80%;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px black solid;
+  font-size: 30px;
+}
+.image-container {
+  margin: 30px;
+}
+.change-quantity {
+  display: inline-flex;
+  flex-direction: row;
+  flex-basis: 20px;
+}
+
+.btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 30px;
+}

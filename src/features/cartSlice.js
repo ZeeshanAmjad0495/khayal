@@ -1,17 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
+import db from '../firebase/firebase.utils';
 
 const initialState = {
   cartItems: [],
-  cartItemsQuantity: 0,
 };
 
 const cartSlice = createSlice({
   name: 'cartItem',
   initialState,
   reducers: {
-    addItemToCart: (state, action) => {
-      state.cartItems.push(action.payload);
-      state.cartItemsQuantity++;
+    addItemsToCart: (state, action) => {
+      const existingItemIndex = state.cartItems.findIndex(
+        cartItem => cartItem.title === action.payload.title
+      );
+
+      if (existingItemIndex !== -1) {
+        const prevQuantity = state.cartItems[existingItemIndex].quantity;
+        const newQuantity = prevQuantity + 1;
+        state.cartItems[existingItemIndex].quantity = newQuantity;
+      } else {
+        state.cartItems.push(action.payload);
+      }
     },
     removeItem: (state, action) => {
       if (state.cartItems.length <= 1) {
@@ -24,6 +33,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItemToCart, removeItem } = cartSlice.actions;
+export const { addItemsToCart, removeItem } = cartSlice.actions;
 export const selectCartItems = state => state.cartItem.cartItems;
 export default cartSlice.reducer;
