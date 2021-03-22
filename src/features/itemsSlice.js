@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 const initialState = {
   items: [],
 };
@@ -11,7 +12,6 @@ const itemsSlice = createSlice({
       state.items = [...action.payload];
     },
   },
-  extraReducers: {},
 });
 
 export const { setItems } = itemsSlice.actions;

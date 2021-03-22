@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import db from '../firebase/firebase.utils';
 import { addItemsToCart } from '../features/cartSlice';
 
 import { Button, Card } from 'antd';

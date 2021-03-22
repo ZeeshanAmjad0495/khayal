@@ -1,29 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import Homepage from './components/pages/Homepage';
-import Cart from './components/pages/Cart';
-import db from './firebase/firebase.utils';
-import { setItems } from './features/itemsSlice';
+import UserRoutes from './routes/UserRoutes';
+import store from './app/store';
 
 function App() {
-  const [itemsData, setItemsData] = useState([]);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    db.collection('items').onSnapshot(snapshot => {
-      setItemsData(snapshot.docs.map(doc => doc.data()));
-    });
-  }, []);
-  dispatch(setItems(itemsData));
-
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={Homepage} />
-      </Switch>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <UserRoutes />
+      </Router>
+    </Provider>
   );
 }
 
